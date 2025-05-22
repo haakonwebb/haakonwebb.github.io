@@ -33,6 +33,50 @@ async function loadChart() {
   
   loadChart();
   
+  fetch('trades.json')
+  .then(response => response.json())
+  .then(trades => {
+    const tbody = document.querySelector('#trade-table tbody');
+    trades.forEach(trade => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${trade.trade_id}</td>
+        <td>${new Date(trade.timestamp * 1000).toLocaleString()}</td>
+        <td>${trade.type}</td>
+        <td>${trade.price}</td>
+        <td>${trade.amount}</td>
+        <td>${trade.status}</td>
+        <td>${trade.profit !== null ? trade.profit : 'N/A'}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  });
+
+
+  fetch('trades.json')
+  .then(response => response.json())
+  .then(trades => {
+    // Assuming you have your chart instance as 'priceChart'
+    trades.forEach(trade => {
+      const annotation = {
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-0',
+        value: new Date(trade.timestamp * 1000),
+        borderColor: trade.type === 'buy' ? 'green' : 'red',
+        borderWidth: 2,
+        label: {
+          content: `${trade.type.toUpperCase()} @ ${trade.price}`,
+          enabled: true,
+          position: 'top'
+        }
+      };
+      priceChart.options.annotation.annotations.push(annotation);
+    });
+    priceChart.update();
+  });
+
+
 
   setInterval(() => {
     location.reload(); // refresh the page every 5 minutes

@@ -1,12 +1,22 @@
 [
   {
-    "timestamp": "2025-05-22T10:00:00Z",
-    "action": "BUY",
-    "price": 165.32
+    "trade_id": "abc123",
+    "timestamp": 1716357000,
+    "type": "buy",
+    "price": 166.5,
+    "amount": 10,
+    "pair": "SOL/USD",
+    "status": "closed",
+    "profit": 2.5
   },
   {
-    "timestamp": "2025-05-22T10:30:00Z",
-    "action": "SELL",
-    "price": 169.15
+    "trade_id": "def456",
+    "timestamp": 1716358800,
+    "type": "sell",
+    "price": 167.5,
+    "amount": 10,
+    "pair": "SOL/USD",
+    "status": "open",
+    "profit": null
   }
 ]
