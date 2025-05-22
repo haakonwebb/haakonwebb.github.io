@@ -1,0 +1,12 @@
+[
+  {
+    "timestamp": "2025-05-22T10:00:00Z",
+    "action": "BUY",
+    "price": 165.32
+  },
+  {
+    "timestamp": "2025-05-22T10:30:00Z",
+    "action": "SELL",
+    "price": 169.15
+  }
+]

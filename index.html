@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Solana Trading Bot Dashboard</title>
+</head>
+<body>
+  <h1>Solana Trading Bot Dashboard</h1>
+  <div id="trades"></div>
+
+  <script>
+    fetch('trades.json')
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById('trades');
+        el.innerHTML = '<h2>Recent Trades</h2>';
+        data.forEach(trade => {
+          el.innerHTML += `<p>${trade.timestamp}: <strong>${trade.action}</strong> at $${trade.price}</p>`;
+        });
+      })
+      .catch(err => {
+        document.getElementById('trades').innerHTML = 'No trade data available.';
+      });
+  </script>
+</body>
+</html>
